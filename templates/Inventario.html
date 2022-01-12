@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            SISTEMA DE INVENTARIO
+        </title>
+
+        <link rel="stylesheet" href="{{ url_for('static',filename = 'css/inve.css') }}">
+    </head>
+
+    <body>
+        <div>
+            <a class = linksalidas href = 'salidas'>SALIDA DE INVENTARIO</a>
+            <a class = linkreporte href = 'reporte'>REPORTE</a>
+
+            <div class = Encabezado></div>
+
+            <h2 class = TITULO>
+                INGRESO INVENTARIO
+            </h2>
+
+            <h4 class = Referencia>
+                Referencia
+            </h4>
+
+            <h4 class = Talla>
+                Talla
+            </h4>
+
+            <h4 class =  Color>
+                Color
+            </h4>
+
+            <h4 class =  Cantidad>
+                Cantidad
+            </h4>
+
+            <h4 class = Valueu>
+                Valor unitario
+            </h4>
+
+
+            <form action = "/" method="post">
+                <input class = formtalla type = "text" required ="" name = "talla" value = "" >
+                <input class = formreferencia typee = "text" required = "" name = "referencia" value ="">
+                <input class = formcolor typee = "text" required = "" name = "color" value ="">
+                <input class = formcantidad typee = "text" required = "" name = "cantidad" value ="">
+                <input class = formvaloru typee = "text" required = "" name = "valoru" value ="">
+
+                <input class = enviar type = "submit" value="Cargar inventario">
+            </form>
+
+
+        </div>
+
+        <div class = reye></div>
+    </body>
+
+
+
+
+</html>

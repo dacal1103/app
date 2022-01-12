@@ -1,0 +1,148 @@
+.Encabezado{
+    display: inline;
+    position: absolute;
+    background-color:rgb(255, 180, 42);
+    padding-left: 1690px;
+    padding-bottom: 80px;
+    z-index: -1;
+    border: 1px solid rgb(255, 180, 42);
+    z-index: -1;
+}
+
+.TITULO{
+    display: inline;
+    position: absolute;
+    right:1410px;
+    color: rgb(124, 124, 124);
+}
+
+
+.Referencia{
+    display: inline;
+    position: absolute;
+    right: 1500px;
+    top:130px;
+}
+
+.Talla{
+    display: inline;
+    position: absolute;
+    right:1530px;
+    top:230px ;
+}
+
+
+
+.Color{
+    display: inline;
+    position: absolute;
+    right:1530px;
+    top: 330px;
+}
+
+.Cantidad{
+    display: inline;
+    position: absolute;
+    right:1506px;
+    top: 430px;
+}
+
+.Valueu{
+    display: inline;
+    position: absolute;
+    right:1480px;
+    top: 530px;
+}
+
+.Valort{
+    display: inline;
+    position: absolute;
+    right:300px;
+    top: 130px;
+}
+
+.formtalla{
+    display: inline;
+    position: absolute;
+    right: 1355px;
+    top:283px;
+    padding-right: 50px;
+    padding-bottom: 7px;;
+}
+
+.formreferencia{
+    display: inline;
+    position: absolute;
+    right:1356px;
+    top:180px;
+    padding-right: 50px;
+    padding-bottom:7px;
+}
+
+.formcolor{
+    display:inline;
+    position: absolute;
+    top:380px;
+    right:1355px;
+    padding-right: 50px;
+    padding-bottom:7px;
+
+}
+
+.formcantidad{
+    display: inline;
+    position: absolute;
+    top:480px;
+    right:1355px;
+    padding-right:50px;
+    padding-bottom:7px;
+}
+
+.formvaloru{
+    display: inline;
+    position: absolute;
+    top:580px;
+    right:1355px;
+    padding-right:50px;
+    padding-bottom:7px;
+}
+
+
+.enviar{
+    display: inline;
+    position: absolute;
+    top:660px;
+    right:1380px;
+    padding-right:50px;
+    background-color:rgb(255, 180, 42);
+    color: rgb(124, 124, 124);
+    padding-bottom: 10px;
+
+}
+
+.linksalidas{
+    display: inline;
+    position: absolute;
+    top:60px;
+    color: rgb(124, 124, 124);
+    right: 500px;
+}
+
+.linkreporte{
+    display: inline;
+    position: absolute;
+    top:60px;
+    color:rgb(124, 124, 124);
+    right:400px;
+}
+
+.reye{
+    display: inline;
+    position: absolute;
+    background-color:rgb(196, 195, 195);
+    padding-right:500px;
+    padding-bottom:650px;
+    top:130px;
+    left:20px;
+    z-index: -1;
+}

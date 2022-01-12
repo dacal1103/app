@@ -1,0 +1,20 @@
+.repo{
+    display: inline;
+    z-index: -1;
+}
+
+.linksalidas{
+    top:50px;
+    position: absolute;
+    display: inline;
+    color: white;
+    right:500px;
+}
+
+.linkingresos {
+    top:50px;
+    position: absolute;
+    display: inline;
+    color: white;
+    right:280px;
+}
