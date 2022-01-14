@@ -6,7 +6,7 @@ import pymysql
 
 
 def actualizar():
-    db = pymysql.connect(host='bzbtkb8kwxgygompihaj-mysql.services.clever-cloud.com', user='u3xb267efkjueftq', passwd='g2j66jqNI3MMgl1QiSaC', db='bzbtkb8kwxgygompihaj', port=3306, charset='utf8')
+    db = pymysql.connect(host='127.0.0.1', user='root', passwd='nora.566', db='referencias', port=3306, charset='utf8')
     cl = db.cursor()
     dato_historico = "select * from referencias"
     cl.execute(dato_historico)
@@ -19,7 +19,7 @@ def actualizar():
     return ID
 
 def lectura_ingreso():
-    lectura =  pymysql.connect(host='bzbtkb8kwxgygompihaj-mysql.services.clever-cloud.com', user='u3xb267efkjueftq', passwd='g2j66jqNI3MMgl1QiSaC', db='bzbtkb8kwxgygompihaj', port=3306, charset='utf8')
+    lectura =  pymysql.connect(host='127.0.0.1', user='root', passwd='nora.566', db='referencias', port=3306, charset='utf8')
     lc = lectura.cursor()
     hist = "select * from referencias"
     lc.execute(hist)
@@ -30,7 +30,7 @@ def lectura_ingreso():
     return datos_ingresos
 
 def acutualizar_salida():
-    db2 = pymysql.connect(host='bzbtkb8kwxgygompihaj-mysql.services.clever-cloud.com', user='u3xb267efkjueftq', passwd='g2j66jqNI3MMgl1QiSaC', db='bzbtkb8kwxgygompihaj', port=3306, charset='utf8')
+    db2 = pymysql.connect(host='127.0.0.1', user='root', passwd='nora.566', db='referencias', port=3306, charset='utf8')
     cl2 = db2.cursor()
     dato_salida = "select * from salidas"
     cl2.execute(dato_salida)
@@ -43,7 +43,7 @@ def acutualizar_salida():
     return ID2
 
 def lectura_salida():
-    db2 = pymysql.connect(host='bzbtkb8kwxgygompihaj-mysql.services.clever-cloud.com', user='u3xb267efkjueftq', passwd='g2j66jqNI3MMgl1QiSaC', db='bzbtkb8kwxgygompihaj', port=3306, charset='utf8')
+    db2 = pymysql.connect(host='127.0.0.1', user='root', passwd='nora.566', db='referencias', port=3306, charset='utf8')
     cl2 = db2.cursor()
     dato_salida = "select * from salidas"
     cl2.execute(dato_salida)
@@ -72,7 +72,7 @@ def procesamiento(datos_entrada,datos_salida):
     return datos_finales
 
 def cargar_tt():
-    db3 = pymysql.connect(host='bzbtkb8kwxgygompihaj-mysql.services.clever-cloud.com', user='u3xb267efkjueftq', passwd='g2j66jqNI3MMgl1QiSaC', db='bzbtkb8kwxgygompihaj', port=3306, charset='utf8')
+    db3 = pymysql.connect(host='127.0.0.1', user='root', passwd='nora.566', db='referencias', port=3306, charset='utf8')
     cl2 = db3.cursor()
     datos_salida = "select * from saldos"
     cl2.execute(datos_salida)
@@ -84,7 +84,9 @@ def cargar_tt():
     ID3 = int(finales)+1
     return ID3
 
-conexion = mysql.connector.connect(user='u3xb267efkjueftq',password='g2j66jqNI3MMgl1QiSaC',host='bzbtkb8kwxgygompihaj-mysql.services.clever-cloud.com',database='bzbtkb8kwxgygompihaj',port='3306')
+
+
+conexion = mysql.connector.connect(user='root',password='nora.566',host='127.0.0.1',database='referencias',port='3306')
 cursor = conexion.cursor()
 
 class Aplicativo:
@@ -142,8 +144,6 @@ def inve():
         id3 = cargar_tt()
         saldos = [int(id3),referencia,color,talla,cantidad,valor_t,valor_u]
         c.cargar_finales(saldos)
-        print(saldos[5])
-
 
 
     return render_template('Inventario.html')
@@ -179,7 +179,30 @@ def salida():
 
 @app.route('/reporte', methods=['GET', 'POST'])
 def reporte():
-    return render_template('reporte.html')
+    db_saldos = pymysql.connect(host='127.0.0.1', user='root', passwd='nora.566', db='referencias', port=3306, charset='utf8')
+    cl2 = db_saldos.cursor()
+    dato_salida = "select * from saldos"
+    cl2.execute(dato_salida)
+    saldos = cl2.fetchall()
+    db_saldos.commit()
+    cl2.close()
+    db_saldos.close()
+    datos_saldos =  pd.DataFrame(saldos)
+    datos_saldos.columns = ['ID','referencia','color','talla','cantidad','valor_total','valor_unitario']
+    datos_saldos.drop([0],inplace=True)
+    datos_saldos['cantidad'] = datos_saldos['cantidad'].astype(int)
+    datos_saldos['talla'] =  datos_saldos['talla'].astype(int)
+    datos_saldos['valor_total'] = datos_saldos['valor_total'].astype(int)
+    datos_saldos['valor_unitario'] = datos_saldos['valor_unitario'].astype(int)
+    datos_pivote =  datos_saldos[[ 'referencia','color','talla','cantidad']]
+    datos_pivote = datos_pivote.pivot_table(index = ['referencia','talla',],columns= ['color'], aggfunc=['sum'])
+    datos_pivote = datos_pivote.fillna('')
+    datos_pivote2 = datos_pivote.reset_index()
+    print(datos_pivote2)
+
+
+
+    return render_template('reporte.html',tables = [datos_pivote.to_html(classes='data')],titles = ['na','Existencias de inventario'])
 
 
 

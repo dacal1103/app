@@ -10,12 +10,19 @@
     </head>
 
     <body>
-        <iframe class = repo title="inve - Página 1" width="1694" height="770"src="https://app.powerbi.com/view?r=eyJrIjoiNTVkZWFjMGUtMWFhYi00NzJjLWIxZjYtMzY2NWYzZmY3ODRmIiwidCI6IjNiOTQ0ZDlhLTEwNTEtNDY4NS1iMDlkLTlhOTVlZTJkYmQ5OSIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+        <!--<iframe class = repo title="inve - Página 1" width="1694" height="770"src="https://app.powerbi.com/view?r=eyJrIjoiNTVkZWFjMGUtMWFhYi00NzJjLWIxZjYtMzY2NWYzZmY3ODRmIiwidCI6IjNiOTQ0ZDlhLTEwNTEtNDY4NS1iMDlkLTlhOTVlZTJkYmQ5OSIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>-->
+        <div class  = page>
+            <h1>Reporte de inventario</h1>
+            {% for table in tables %}
+                <h2>{{titles[loop.index]}}</h2>
+                {{table|safe}}
+            {%endfor %}
+        </div>
+        <div class =subdiv></div>
         <a class = linksalidas href = '/'>INGRESO DE INVENTARIO</a>
         <a class = linkingresos href = 'salidas'>SALIDAS DE INVENTARIO</a>
+
     </body>
-
-
 
 
 </html>
